@@ -1,4 +1,4 @@
-import { TreeNode } from "./types";
+import type { TreeNode } from "./types.js";
 
 export const cloneAndSort = (root: TreeNode): TreeNode => {
   const clonedNode: TreeNode = { field: root.field, depth: root.depth, children: [] }
@@ -20,7 +20,7 @@ export const sortInPlace = (root: TreeNode): TreeNode => {
       children.sort((a,b) => a.field.localeCompare(b.field))
       for (let i = children.length - 1; i >= 0; i--) {
         const child = children[i]
-        if (child.children.length) {
+        if (child?.children?.length) {
           stack.push(child)
         }
       }

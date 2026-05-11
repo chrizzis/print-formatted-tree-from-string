@@ -1,4 +1,4 @@
-import { TreeNode } from "./types"
+import type { TreeNode } from "./types.js"
 
 export const buildTree = (input: string): TreeNode => {
   const stack: TreeNode[] = []
@@ -34,7 +34,9 @@ export const buildTree = (input: string): TreeNode => {
       if (field) {
         const node: TreeNode = { field, depth, children: [] }
         const parent = stack[stack.length - 1]
-        parent.children.push(node)
+        if (parent) {
+          parent.children.push(node)
+        }
       }
       stack.pop()
       depth -= 1
@@ -44,7 +46,9 @@ export const buildTree = (input: string): TreeNode => {
       if (field) {
         const node: TreeNode = { field, depth, children: [] }
         const parent = stack[stack.length - 1]
-        parent.children.push(node)
+        if (parent) {
+          parent.children.push(node)
+        }
       }
       text = ''
     } else {

@@ -1,4 +1,4 @@
-import { TreeNode } from "./types";
+import type { TreeNode } from "./types.js";
 
 export const formatTreeToString = (root: TreeNode, excludeRoot: boolean = true): string => {
   const formatted: string[] = []
@@ -13,7 +13,7 @@ export const formatTreeToString = (root: TreeNode, excludeRoot: boolean = true):
   if (excludeRoot) {
     const rootChildren = root.children
     for (let i = rootChildren.length - 1; i >= 0; i--) {
-      stack.push(rootChildren[i])
+      stack.push(rootChildren[i]!)
     }
   } else {
     stack.push(root)
@@ -26,7 +26,7 @@ export const formatTreeToString = (root: TreeNode, excludeRoot: boolean = true):
       formatted.push(formattedFieldIndented(field, depth))
       if (children.length) {
         for (let i = children.length - 1; i >= 0; i--) {
-          stack.push(children[i])
+          stack.push(children[i]!)
         }
       }
     }

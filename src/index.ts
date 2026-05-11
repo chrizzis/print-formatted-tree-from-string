@@ -1,7 +1,7 @@
-import { DEFAULT_STRING } from './constants'
-import { buildTree } from "./parser";
-import { cloneAndSort as treeSort } from "./treeTransformer"
-import { formatTreeToString } from './formatter';
+import { DEFAULT_STRING } from "./constants.js"
+import { buildTree } from "./parser.js"
+import { cloneAndSort as treeSort } from "./treeTransformer.js"
+import { formatTreeToString } from "./formatter.js"
 
 function main(): void {
   const tree = buildTree(DEFAULT_STRING)
