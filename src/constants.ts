@@ -1,0 +1,1 @@
+export const DEFAULT_STRING = "(id, name, email, type(id, name, customFields(c1, c2, c3)), externalId)"
