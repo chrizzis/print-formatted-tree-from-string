@@ -1,6 +1,18 @@
 import { TreeNode } from "./types";
 
-export const sort = (root: TreeNode): TreeNode => {
+export const cloneAndSort = (root: TreeNode): TreeNode => {
+  // yargh. i dont want to clone then sort, id need to clone and sort for perf
+  const clonedNode: TreeNode = { field: root.field, depth: root.depth, children: [] }
+  
+  const clonedChildren = root.children.map(child => cloneAndSort(child))
+
+  clonedChildren.sort((a,b) => a.field.localeCompare(b.field))
+  clonedNode.children = clonedChildren
+
+  return clonedNode
+}
+
+export const sortInPlace = (root: TreeNode): TreeNode => {
   let stack: TreeNode[] = [root]
 
   while (stack.length > 0) {
