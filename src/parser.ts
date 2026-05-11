@@ -1,7 +1,6 @@
 import { TreeNode } from "./types"
 
 export const buildTree = (input: string): TreeNode => {
-  console.log(`buildTree start`)
   const stack: TreeNode[] = []
   let text = ''
   let field = ''
@@ -14,7 +13,6 @@ export const buildTree = (input: string): TreeNode => {
   for (let char of input) {
     if (char === '(') {
       field = text.trim()
-      console.log(`'(': field: '${field}', depth: ${depth}`)
       if (depth === 0 && field) {
         rootNode = { field, depth, children: [] }
         stack.push(rootNode)
@@ -33,7 +31,6 @@ export const buildTree = (input: string): TreeNode => {
       text = ''
     } else if (char === ')') {
       field = text.trim()
-      console.log(`')': field: '${field}', depth: ${depth}`)
       if (field) {
         const node: TreeNode = { field, depth, children: [] }
         const parent = stack[stack.length - 1]
@@ -44,7 +41,6 @@ export const buildTree = (input: string): TreeNode => {
       text = ''
     } else if (char === ',') {
       field = text.trim()
-      console.log(`',': field: '${field}', depth: ${depth}`)
       if (field) {
         const node: TreeNode = { field, depth, children: [] }
         const parent = stack[stack.length - 1]
@@ -55,6 +51,5 @@ export const buildTree = (input: string): TreeNode => {
       text += char
     }
   }
-  console.log(`buildTree returning: ${JSON.stringify(rootNode, null, 2)}`)
   return rootNode
 }

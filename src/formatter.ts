@@ -1,14 +1,12 @@
 import { TreeNode } from "./types";
 
 export const formatTreeToString = (root: TreeNode, excludeRoot: boolean = true): string => {
-  console.log(`formatTreeToString start`)
   const formatted: string[] = []
   let stack: TreeNode[] = []
 
   const formattedFieldIndented = (field: string, depth: number): string => {
     const indentDepth = excludeRoot ? depth -1 : depth
     const formattedString =  `${' '.repeat(indentDepth)}- ${field}`
-    console.log(`formattedFieldIndented: ${formattedString}`)
     return formattedString
   }
   
@@ -33,6 +31,5 @@ export const formatTreeToString = (root: TreeNode, excludeRoot: boolean = true):
       }
     }
   }
-  console.log(`transformTreeToString:\n${formatted.join('\n')}`)
   return formatted.join('\n')
 }
